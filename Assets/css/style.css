@@ -4,6 +4,11 @@ body {
     line-height: 1;
   }
 
+  main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .jumbotron {
     text-align: center;
     background: rgb(0,212,255);
@@ -13,10 +18,97 @@ body {
     border-bottom: 10px solid black;
   }
 
-  .form-control {
-      
+  .search-result {
+    width: 100%;
   }
 
-  .btn {
-      margin: 8px 0;
+  .search-card {
+    /* position: absolute; */
+    width: 20%;
+    justify-content: space-evenly;
+    /* height: 100vh; */
   }
+
+  .card-header {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .form-outline {
+    margin-top: 8px;
+    align-self: center;
+    margin-left: 8px;
+  }
+
+  .search-btn {
+    width: 19rem;
+    margin: 8px 8px;
+  }
+
+  .old-cities {
+    text-align: center;
+  }
+
+  .old-cities input {
+    height: 30px;  
+    width: 19rem;
+    border-radius: 10px;
+    margin-top: 8px;
+    align-self: center;
+    /* margin-left: 8px; */
+    cursor: pointer;
+    background: darkgray;
+  }
+
+  .old-cities input:hover {
+    background: black;
+    color: white;
+  }
+
+  .container-fluid {
+    /* display: none; */
+    width: 70%
+  }
+
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .city-header {
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .time-header {
+    font-size: 18px;
+  }
+
+  .forecast-container {
+    height: 250px;
+    /* width: 70%; */
+    justify-self: right;
+  }
+
+  .forecast-header {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .forecast-card {
+    background: darkblue;
+    color: white;
+  }
+
+  .searchAgain {
+    background-color: tomato;
+  }
+
+  #index {
+    color: white;
+  }
+
+  
+
+
+  

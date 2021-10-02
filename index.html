@@ -14,32 +14,104 @@
 </head>
 
 <body>
-    <header class="jumbotron">
-        <h1 class="display-3">Weather Dashboard</h1>
-    </header>
+  <header class="jumbotron">
+    <h1 class="display-3">Weather Dashboard</h1>
+  </header>
 
-    <main>
-        <div class="card ml-4 text-center" style="width: 20rem;">
-            <div class="card-header">
-              Search for a City:
+  <main>
+    <div class="card ml-4 text-center search-card" style="width: 20rem;">
+      <div class="card-header">Search for a City:</div>
+      <div class="input-group">
+        <div class="form-outline">
+          <input type="search" id="form1" class="form-control" style="width: 19rem;" />
+        </div>
+        <button type="button" class="search-btn btn-primary btn-lg btn-block">Search</button>
+      </div>
+      <form class="list-group old-cities"></form>
+    </div>
+
+    <div class="container-fluid" id="weather-container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-4 col-sm-12 col-xs-12">
+          <div class="card p-4">
+            <div class="d-flex">
+              <h6 class="flex-grow-1 city-header"></h6>
+              <h6 class="time-header"></h6>
             </div>
-            <div class="input-group">
-                <div class="form-outline">
-                  <input type="search" id="form1" class="form-control" style="width: 18rem;" />
-                  <!-- <label class="form-label" for="form1">Search</label> -->
-                </div>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Search</button>
+            <div class="d-flex flex-column temp mt-5 mb-3">
+              <h1 class="mb-0 font-weight-bold" id="heading"></h1> <span class="small grey conditions"></span>
+            </div>
+            <div class="d-flex">
+              <div class="temp-details flex-grow-1">
+                <p class="my-1">Wind <img src="https://i.imgur.com/B9kqOzp.png" height="17px">: <span id="wind"></span> </p><br>
+                <p class="my-1">Humidity <i class="fa fa-tint mr-2" aria-hidden="true"></i>: <span id="humidity"></span> </p><br>
+                <p class="my-1"> UV Index: <span id="index"></span> </p>
               </div>
-            <ul class="list-group">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
+              <div> <img src="" id="current-icon" width="100px" alt="Weather Icon"> </div>
+            </div>
           </div>
-    </main>
+        </div>
+      </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+      <div class="forecast-container"><span class="forecast-header">  5-Day Forecast:</span>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-body forecast-card">
+              <h5 class="forecast-card-title" id="date1"></h5>
+              <img src="" id="daily-icon1" height="75px">
+              <p class="card-text" id="temp1"></p>
+              <p class="card-text" id="wind1"></p>
+              <p class="card-text" id="humid1"></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body forecast-card">
+              <h5 class="forecast-card-title" id="date2"></h5>
+              <img src="" id="daily-icon2" height="75px">
+              <p class="card-text" id="temp2"></p>
+              <p class="card-text" id="wind2"></p>
+              <p class="card-text" id="humid2"></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body forecast-card">
+              <h5 class="forecast-card-title" id="date3"></h5>
+              <img src="" id="daily-icon3" height="75px">
+              <p class="card-text" id="temp3"></p>
+              <p class="card-text" id="wind3"></p>
+              <p class="card-text" id="humid3"></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body forecast-card">
+              <h5 class="forecast-card-title" id="date4"></h5>
+              <img src="" id="daily-icon4" height="75px">
+              <p class="card-text" id="temp4"></p>
+              <p class="card-text" id="wind4"></p>
+              <p class="card-text" id="humid4"></p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body forecast-card">
+              <h5 class="forecast-card-title" id="date5"></h5>
+              <img src="" id="daily-icon5" height="75px">
+              <p class="card-text" id="temp5"></p>
+              <p class="card-text" id="wind5"></p>
+              <p class="card-text" id="humid5"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+    
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
