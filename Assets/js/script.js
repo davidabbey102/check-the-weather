@@ -1,5 +1,4 @@
 var searchBtn = $(".search-btn")
-var APIKey = "71965dc096003a4b32ca2536c3f780b3"
 var city
 var oldCities = document.querySelector(".old-cities")
 var temperature = document.querySelector("#heading")
