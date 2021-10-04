@@ -11,7 +11,8 @@ var searchAgain = document.querySelector(".searchAgain")
 
 function getWeather(city) {
     var requestUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial"
-    savePastSearches() 
+    savePastSearches()
+    console.log(city) 
     fetch(requestUrl)
         .then(function(response) {
             return response.json()
@@ -101,7 +102,9 @@ function getWeather(city) {
    $(".container-fluid").show()
 }
 
+//Displays past searches and add new ones to the list while also filtering repeats out of the stored array of cities, unfortunately misspelled cities get saved too
 function showPastSearches() {
+    oldCities.innerHTML = ""
     var pastCities = JSON.parse(localStorage.getItem("pastSearches"))
     var filteredCities = [...new Set(pastCities)]
 
@@ -113,14 +116,16 @@ function showPastSearches() {
             newInput.setAttribute('value', cityList)
             // newInput.textContent = cityList
             oldCities.append(newInput)
-            // newInput[i].addEventListener('click', function() {
-            //     getWeather(newInput.value)
-            // }) 
+            newInput.addEventListener('click', function(event) {
+                city = (event.target).value
+                getWeather(city)
+            }) 
             localStorage.setItem("pastSearches", JSON.stringify(filteredCities))
     }
     // addEars()
 }
 
+//Saves searches to local 
 function savePastSearches() {
     var oldSearches = JSON.parse(localStorage.getItem("pastSearches"))
     var toCapitalize = $("#form1").val()
@@ -134,16 +139,7 @@ function savePastSearches() {
         oldSearches.push(capitalized)
         localStorage.setItem("pastSearches", JSON.stringify(oldSearches))
     }
-    addNewestSearch()
-}
-
-function addNewestSearch() {
-    var toCapitalize = $("#form1").val()
-    var capitalized = toCapitalize.charAt(0).toUpperCase() + toCapitalize.slice(1)
-    var newBtn = document.createElement("button")
-    newBtn.classList.add('searchAgain')
-    newBtn.textContent = capitalized
-    oldCities.append(newBtn)
+    showPastSearches()
 }
 
 $(".container-fluid").hide()
@@ -151,9 +147,7 @@ showPastSearches()
 
 //Search Button input search
 searchBtn.on('click', function() {
-    // city = $("#form1").val()
     getWeather($("#form1").val())
-    console.log("Bye")
 })
 
 
