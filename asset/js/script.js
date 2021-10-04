@@ -11,7 +11,7 @@ var searchAgain = document.querySelector(".searchAgain")
 
 function getWeather(city) {
     //first search by city name result receives less data but provides lat and long for second search
-    var requestUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial"
+    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial"
     savePastSearches()
     console.log(city) 
     fetch(requestUrl)
