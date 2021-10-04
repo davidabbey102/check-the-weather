@@ -37,7 +37,7 @@ function getWeather(city) {
             index.textContent = data2.current.uvi
             uviLevel = data2.current.uvi
             var currentIcon = data2.current.weather[0].icon
-            var  iconUrl = "http://openweathermap.org/img/w/" + currentIcon + ".png"
+            var  iconUrl = "https://openweathermap.org/img/w/" + currentIcon + ".png"
             $("#current-icon").attr("src", iconUrl)
 
             //change UVI color
@@ -54,15 +54,15 @@ function getWeather(city) {
 
             //5-day forecast cards
             //Icon
-            var  iconUrl1 = "http://openweathermap.org/img/w/" + data2.daily[0].weather[0].icon + ".png"
+            var  iconUrl1 = "https://openweathermap.org/img/w/" + data2.daily[0].weather[0].icon + ".png"
             $("#daily-icon1").attr("src", iconUrl1)
-            var  iconUrl2 = "http://openweathermap.org/img/w/" + data2.daily[1].weather[0].icon + ".png"
+            var  iconUrl2 = "https://openweathermap.org/img/w/" + data2.daily[1].weather[0].icon + ".png"
             $("#daily-icon2").attr("src", iconUrl2)
-            var  iconUrl3 = "http://openweathermap.org/img/w/" + data2.daily[2].weather[0].icon + ".png"
+            var  iconUrl3 = "https://openweathermap.org/img/w/" + data2.daily[2].weather[0].icon + ".png"
             $("#daily-icon3").attr("src", iconUrl3)
-            var  iconUrl4 = "http://openweathermap.org/img/w/" + data2.daily[3].weather[0].icon + ".png"
+            var  iconUrl4 = "https://openweathermap.org/img/w/" + data2.daily[3].weather[0].icon + ".png"
             $("#daily-icon4").attr("src", iconUrl4)
-            var  iconUrl5 = "http://openweathermap.org/img/w/" + data2.daily[4].weather[0].icon + ".png"
+            var  iconUrl5 = "https://openweathermap.org/img/w/" + data2.daily[4].weather[0].icon + ".png"
             $("#daily-icon5").attr("src", iconUrl5)
 
             //5 day temp
