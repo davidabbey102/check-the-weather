@@ -13,14 +13,11 @@ function getWeather(city) {
     //first search by city name result receives less data but provides lat and long for second search
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial"
     savePastSearches()
-    console.log(city) 
     fetch(requestUrl)
         .then(function(response) {
             return response.json()
         })
-        .then(function(data) {
-            console.log(data)
-            
+        .then(function(data) {            
             lati = data.coord.lat
             long = data.coord.lon            
        
@@ -32,7 +29,6 @@ function getWeather(city) {
            return response2.json()
        })
        .then(function(data2) {
-           console.log(data2)
            //Curent weather info
            temperature.textContent = data2.current.temp + "° F"
             conditions.textContent = data2.current.weather[0].description
@@ -68,7 +64,6 @@ function getWeather(city) {
             $("#daily-icon4").attr("src", iconUrl4)
             var  iconUrl5 = "http://openweathermap.org/img/w/" + data2.daily[4].weather[0].icon + ".png"
             $("#daily-icon5").attr("src", iconUrl5)
-            console.log(data2.daily[0].weather[0].icon)
 
             //5 day temp
             $("#temp1").text("Temp: " + data2.daily[0].temp.day + "° F")
@@ -94,7 +89,7 @@ function getWeather(city) {
    })
    
    $(".city-header").text(city + " (" + moment().format("L") + ")")
-   $(".time-header").text(moment().format("hh:mm"))
+   $(".time-header").text(moment().format("hh:mm a"))
    $("#date1").text(moment().add(1, "day").format("L"))
    $("#date2").text(moment().add(2, "day").format("L"))
    $("#date3").text(moment().add(3, "day").format("L"))
@@ -141,6 +136,7 @@ function savePastSearches() {
     showPastSearches()
 }
 
+//on load current and forecast cards hidden, past searches populated
 $(".container-fluid").hide()
 showPastSearches()
 
