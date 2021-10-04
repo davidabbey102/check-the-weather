@@ -10,6 +10,7 @@ var index = document.querySelector("#index")
 var searchAgain = document.querySelector(".searchAgain")
 
 function getWeather(city) {
+    //first search by city name result receives less data but provides lat and long for second search
     var requestUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial"
     savePastSearches()
     console.log(city) 
@@ -23,7 +24,7 @@ function getWeather(city) {
             lati = data.coord.lat
             long = data.coord.lon            
        
-
+            //second search uses lat and long data to receive a more detained current and forecast info block, used to populate weather cards
        var newUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lati + "&lon=" + long + "&exclude=minutely,hourly,alerts&appid=" + APIKey + "&units=imperial"
 
        fetch(newUrl)
@@ -69,21 +70,21 @@ function getWeather(city) {
             $("#daily-icon5").attr("src", iconUrl5)
             console.log(data2.daily[0].weather[0].icon)
 
-            //temp
+            //5 day temp
             $("#temp1").text("Temp: " + data2.daily[0].temp.day + "° F")
             $("#temp2").text("Temp: " + data2.daily[1].temp.day + "° F")
             $("#temp3").text("Temp: " + data2.daily[2].temp.day + "° F")
             $("#temp4").text("Temp: " + data2.daily[3].temp.day + "° F")
             $("#temp5").text("Temp: " + data2.daily[4].temp.day + "° F")
 
-            //wind
+            //5 day wind
             $("#wind1").text("Wind: " + data2.daily[0].wind_speed + " MPH")
             $("#wind2").text("Wind: " + data2.daily[1].wind_speed + " MPH")
             $("#wind3").text("Wind: " + data2.daily[2].wind_speed + " MPH")
             $("#wind4").text("Wind: " + data2.daily[3].wind_speed + " MPH")
             $("#wind5").text("Wind: " + data2.daily[4].wind_speed + " MPH")
 
-            //humidity
+            //5 day humidity
             $("#humid1").text("Humidity: " + data2.daily[0].humidity + "%")
             $("#humid2").text("Humidity: " + data2.daily[1].humidity + "%")
             $("#humid3").text("Humidity: " + data2.daily[2].humidity + "%")
@@ -114,7 +115,6 @@ function showPastSearches() {
             newInput.setAttribute('tpye', 'text')
             newInput.setAttribute('readonly', true)
             newInput.setAttribute('value', cityList)
-            // newInput.textContent = cityList
             oldCities.append(newInput)
             newInput.addEventListener('click', function(event) {
                 city = (event.target).value
@@ -122,10 +122,9 @@ function showPastSearches() {
             }) 
             localStorage.setItem("pastSearches", JSON.stringify(filteredCities))
     }
-    // addEars()
 }
 
-//Saves searches to local 
+//Saves searches to local runs show to update list
 function savePastSearches() {
     var oldSearches = JSON.parse(localStorage.getItem("pastSearches"))
     var toCapitalize = $("#form1").val()
@@ -149,15 +148,3 @@ showPastSearches()
 searchBtn.on('click', function() {
     getWeather($("#form1").val())
 })
-
-
-
-//Old searches list buttons input search
-// for (var i = 0; i < searchAgain.length; i++)    
-//     searchAgain[i].addEventListener('click', function(event) {
-//         city = (event.target).val()
-//         console.log((event.target).value)
-//         console.log("Hello")
-//     })
-
-// 1063.3 x 565
